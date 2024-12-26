@@ -13,9 +13,7 @@ fastapi also puts auto generated API docs and an API tester at /docs.
 
 All state is stored in a sqlite file called app.db
 
-The current flow assumes there's a totally separate frontend server out there
-that serves a web client people use. The api exposed here stays hidden. The
-steps to that flow are linear:
+The current flow assumes there's a totally separate frontend server out there that serves a web client people use. The api exposed here stays hidden. The steps to that flow are linear:
 
 ### User wants to open an event ("spot") for reservations
 
@@ -27,7 +25,7 @@ steps to that flow are linear:
 
 3. Other user follows URL from the QR in (2) to get the client. Client uses the spot_name embedded in the URL to hit /reserve/{spot_name} here. This returns a CTicket json object.
 
-4. Other user's client uses the CTicket from (4) to display a QR that contains json for the CTicket
+4. Other user's client uses the CTicket from (3) to display a QR that contains json for the CTicket
 
 ### Optionally, a ticket checker wants to validate tickets
 
@@ -38,4 +36,6 @@ steps to that flow are linear:
 ### Comments
 
 Strictly speaking, we don't _need_ to have a separate frontend. Some simple static pages could get served from here and new endpoints could be made to accommodate not having a frontend.
+
+Also, step 5 is kind of paranoid. Step 4 could just present a url pointing at the redemption endpoint for the ticket.
 

@@ -19,12 +19,11 @@ app = FastAPI()
 ################################################################################
 
 def make_id(model:pydantic.BaseModel):
-    #R = np.frombuffer(uuid.uuid4().bytes,dtype=np.int64)
+    R = np.frombuffer(uuid.uuid4().bytes,dtype=np.int64)
     H = np.frombuffer(
         mmh3_x64_128_digest(model.json().encode('utf8')),dtype=np.int64
     )
-    #return int(R[0] ^ R[1] ^ H[0] ^ H[1])
-    return int(H[0] ^ H[1])
+    return int(R[0] ^ R[1] ^ H[0] ^ H[1])
 
 ###
 
