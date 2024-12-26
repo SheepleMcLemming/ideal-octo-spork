@@ -25,7 +25,7 @@ steps to that flow are linear:
 
 ### Other users want a ticket for a spot
 
-3. Other user follows URL from the QR in (3) to get the client. Client uses the spot_name embedded in the URL to hit /reserve/{spot_name} here. This returns a CTicket json object.
+3. Other user follows URL from the QR in (2) to get the client. Client uses the spot_name embedded in the URL to hit /reserve/{spot_name} here. This returns a CTicket json object.
 
 4. Other user's client uses the CTicket from (4) to display a QR that contains json for the CTicket
 
@@ -37,6 +37,5 @@ steps to that flow are linear:
 
 ### Comments
 
-Strictly speaking, we don't _need_ to have a separate frontend. Some simple
-static pages could get served from here.
+Strictly speaking, we don't _need_ to have a separate frontend. Some simple static pages could get served from here and new endpoints could be made to accommodate not having a frontend.
 
