@@ -23,9 +23,9 @@ The current flow assumes there's a totally separate frontend server out there th
 
 ### Other users want a ticket for a spot
 
-3. Other user follows URL from the QR in (2) to get the client. Client uses the spot_name embedded in the URL to hit /reserve/{spot_name} here. This returns a CTicket json object.
+3. Other user follows URL from the QR in (2) to get the client. Client uses the spot_name embedded in the URL to hit /reserve/{spot_name} here. This returns a CTicket json object. The CSlot field of the CTicket indicates which time slot the ticket is for. Currently, slots are assigned on a soonest available basis.
 
-4. Other user's client uses the CTicket from (3) to display a QR that contains json for the CTicket
+4. Other user's client uses the CTicket from (3) to display a QR that contains json for the CTicket.
 
 ### Optionally, a ticket checker wants to validate tickets
 
@@ -38,4 +38,6 @@ The current flow assumes there's a totally separate frontend server out there th
 Strictly speaking, we don't _need_ to have a separate frontend. Some simple static pages could get served from here and new endpoints could be made to accommodate not having a frontend.
 
 Also, step 5 is kind of paranoid. Step 4 could just present a url pointing at the redemption endpoint for the ticket.
+
+There's currently no true queueing mechanic where you wait for your place in line to be called. Right now, you just get a ticket for a point in time and show up.
 
